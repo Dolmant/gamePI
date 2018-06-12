@@ -1,0 +1,89 @@
+Tech stack:
+SQL (regular instance). Google spanner if I need to scale
+Golang
+Kubernetes
+
+Tech stack todo:
+How to manage TIME between nodes?
+
+managing real time fights without cheating.
+
+node crashing/backup
+
+scheduling events in golang
+
+System design
+
+Master server has the current tick and keeps everyone in check? Master tick advances when all of this ticks processing is done
+Other tick stuff can wait until later.
+
+Master node waits for all nodes to report current tick completion.
+All incoming requests default to next tick.
+
+
+make a go game like screeps? calls not retractable, take time to arrive, etc api spaceship game
+voxel graphics in simple clients
+
+wish to be highly scalable. To do this, need to be able to:
+effectively contain game into locations that interact with each other
+allow game to be scaled with additional DBs or additional cores
+
+marshal node for creating and managing DB and instances and defining their domains
+Marshal node is the DB and nodes to work with. It queries the DB for relevant (would there be any?) existing info and assigns appropriately
+DB connector/lib should automatically take care of sharding if i go there
+
+each node passed THE DB and a list of tasks
+node registers with the marshal
+marshal passes registered nodes the correct data to process.
+
+Nodes use a halfproxy (direct server return)
+
+locations must be like eve with a huge number of data points controlled by nodes in a grid
+
+You are on grid if you are in the same node as someone else.
+Grids are automatically allocated (can be static to begin with)
+
+Server processes all objects that live in its grid.
+
+Each server exposes API's for objects.
+
+User data lives on the coordination node, everyone has to ask it for manifest of things like:
+"Where can I get user X's data"? "User X has data on Y and Z nodes"
+"Who is managing location Y"? "Node C is managing location Y"
+
+Each node manages its own redis cache (get) and external database (write-after)
+
+What happens when a node runs slow?
+Game ticks run less often for those nodes.
+
+Non physics timers are run based on the clock
+
+All data is stored as a timestamped vector, allowing views to be built
+e.g. location of stuff, etc. Frontend doesnt need to query for anything.
+
+APIs respond with which tick your command was executed/queued in.
+
+Fights are on dedicated fight nodes?
+
+Gameplay
+Similar to even onlines planetary interaction.
+
+Race for the space emporer - control your local space seat and you can tax everyone
+Mine resources and build up.
+Private, non interactable world similar to a click game. Only need the API for late game
+Public worlds you can fight over. Worlds consist of many locations
+Use the same private world interface for public worlds
+Attacks are time restricted
+destinations are also time restricted.
+Have to funnel troops in through a beachhead
+
+Fight in person or using my terrible AI.
+Fights are a (JS?) asteroid clone - kinda like starsector. More ships, more stuff.
+Attackers choose a time to attack, defender can mitigate by X hours.
+
+Events are scheduled and run at that time
+
+Coordinate with people via troop donation
+
+Can have alliances and groups with permissions like eve
+can backstab people
