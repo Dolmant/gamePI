@@ -2,6 +2,7 @@ Tech stack:
 SQL (regular instance). Google spanner if I need to scale
 Golang
 Kubernetes
+phasorjs frontend
 
 Tech stack todo:
 How to manage TIME between nodes?

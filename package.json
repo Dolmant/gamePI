@@ -1,0 +1,22 @@
+{
+  "name": "game_pi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dolmant/gamePI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dolmant/gamePI/issues"
+  },
+  "homepage": "https://github.com/Dolmant/gamePI#readme",
+  "dependencies": {
+    "phaser": "^3.10.1"
+  }
+}
